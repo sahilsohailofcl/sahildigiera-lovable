@@ -1,18 +1,16 @@
 /**
  * Homepage - Main landing page
- * Features: Hero with 3D blob, services, pricing, testimonials
+ * Features: Hero with CSS animation fallback, services, pricing, testimonials
  */
 
-import React, { Suspense } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
 import { Sparkles, ArrowRight, Play, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
-// Lazy load 3D component for better performance
-const FloatingBlob = React.lazy(() => import("../components/3d/FloatingBlob"));
+// CSS-based floating animation as fallback
 
 const Home = () => {
   const services = [
@@ -87,13 +85,43 @@ const Home = () => {
     <div className="relative">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* 3D Background */}
-        <div className="absolute inset-0">
-          <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-            <Suspense fallback={null}>
-              <FloatingBlob />
-            </Suspense>
-          </Canvas>
+        {/* CSS Animated Background */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.1, 1],
+            }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="w-96 h-96 rounded-full bg-gradient-primary opacity-20 blur-3xl"
+          />
+          <motion.div
+            animate={{ 
+              rotate: -360,
+              y: [-20, 20, -20],
+            }}
+            transition={{ 
+              rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute w-32 h-32 rounded-full bg-primary/30 blur-2xl"
+            style={{ top: '20%', right: '20%' }}
+          />
+          <motion.div
+            animate={{ 
+              rotate: 360,
+              x: [-30, 30, -30],
+            }}
+            transition={{ 
+              rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+              x: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute w-24 h-24 rounded-full bg-secondary/40 blur-xl"
+            style={{ bottom: '30%', left: '15%' }}
+          />
         </div>
 
         {/* Hero Content */}

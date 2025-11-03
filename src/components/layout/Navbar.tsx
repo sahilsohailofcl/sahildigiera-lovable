@@ -9,7 +9,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import sd from "@/assets/sd.webp";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,9 +64,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <motion.img
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              src={sd}
+            <img
+              src="/sd.webp"
               alt="Sahil Digiera Logo"
               className="h-10 w-auto object-contain drop-shadow-md"
             />

@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import sd from "@/assets/sd.webp";
+import sd from "../../../public/SD.webp"
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

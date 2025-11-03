@@ -65,7 +65,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <img src={sd} alt="Sahil Digiera Logo" className="h-10 w-auto" />
+            <img src={sd} alt="Sahil Digiera Logo" className="h-16 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
